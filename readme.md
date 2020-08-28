@@ -1,6 +1,6 @@
-# 12 hours challenge: project 1
+# 24 hours challenge: project 1
 
-This is one of my own challenges: every project is limited to be done within `12 hours`
+This is one of my own challenges: every project is limited to be done within `24 hours`
 
 ## What is this demo included
 
