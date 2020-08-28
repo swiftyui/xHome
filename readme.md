@@ -22,54 +22,6 @@ I also have my own implementation of similar way under the folder of `Redux (Dep
 
 The bad part of single source state is potential diff performance (similar here: https://nalexn.github.io/swiftui-observableobject/), this happens especially on big projects. In this case, my suggestion is to use multiple stores (communications between them then will be a challenge)
 
-## Json data mapping consideration
-
-- some fields may be optional
-
-```swift
-var username: String?
-```
-
-- need a default value if not available
-
-```swift
-var username: String? = "Testing"
-```
-
-- mappable and rename
-
-```swift
-func mapping(map: Map) {
-  newName    <- map["username"]
-}
-```
-
-- Enum/Date/Data/URL/Decimal/Color auto mapping
-
-- How to map Json object to Swift Dictionary
-
-```swift
-var dictAnyObject: Dictionary<String, Any> = [:]
-```
-
-- optional chaining optimization
-
-```swift
-//bad
-if let JSONObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String: Any]],
-    let username = (JSONObject[0]["user"] as? [String: Any])?["name"] as? String {
-        // There's our username
-}
-
-//good
-let json = JSON(data: dataFromNetworking)
-if let userName = json[0]["user"]["name"].string {
-  //Now you got your value
-}
-```
-
-- Integration with Almofire/Moya
-
 ## How to convert model objects( pure classes/structs ) to and from JSON
 
 `Moya` builtin supports data model mapping, and fits my requirement, so I don't need any additional framework
